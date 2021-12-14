@@ -1,0 +1,39 @@
+---
+import SocialEmbed from '$/components/SocialEmbed.astro';
+import Header from '$/components/Header.astro';
+import { SITE_NAME } from '$/constants.js';
+
+const currentPage = Astro.request.url.pathname;
+
+const { transparent=true, title=currentPage } = Astro.props;
+const titleGenerated = (currentPage === '/') ? SITE_NAME : `${SITE_NAME} | ${title.replace(/^\/+|\/+$/g, '')}`;
+---
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+
+        <SocialEmbed
+            title={ titleGenerated }
+            description="woah very descriptin omg!!!"
+            image="assets/logo.svg"
+            color="#e04715"
+        />
+
+        <link rel="icon" href="/content/shared/favicon.ico">
+        <link rel="stylesheet" lang="scss" href="{Astro.resolve('../css/main.css')}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800;900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <Header
+            page={currentPage}
+            transparent={transparent}
+        />
+
+        <div class="content">
+            <slot />
+        </div>
+    </body>
+</html>

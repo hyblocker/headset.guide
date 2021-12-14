@@ -1,0 +1,33 @@
+---
+const { page, transparent = false } = Astro.props;
+
+const getLinkClass = ((url) => {
+    if (page === '/') {
+        if (url === page) {
+            return "headerPage selected";
+        } else {
+            return "headerPage";
+        }
+    } else {
+        if (url !== '/') {
+            return ((page.includes(url)) ? "headerPage selected" : "headerPage");
+        } else {
+            return "headerPage";
+        }
+    }
+});
+
+const homeRootClassList = transparent === "true" ? "header transparent" : "header";
+
+const homeClassList = getLinkClass("/");
+const aboutClassList = getLinkClass("/about");
+const docsClassList = getLinkClass("/docs");
+
+---
+<div class={homeRootClassList}>
+    <ul class="headerLinks">
+        <li><a class={homeClassList} href="/">Home</a></li>
+        <li><a class={aboutClassList} href="/about">About</a></li>
+        <li><a class={docsClassList} href="/docs">Documentation</a></li>
+    </ul>
+</div>
