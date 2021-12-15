@@ -1,19 +1,25 @@
 ---
-const { title, description, image, color } = Astro.props;
+const { title, description, image, color, canonicalURL } = Astro.props;
 import { DOMAIN } from '$/constants.js';
 ---
 
+<!-- Generic  -->
 <title>{title}</title>
-<meta name="description" content={description}>
-<meta name="theme-color" content={color}/>
+<link rel="canonical" href={canonicalURL}/>
+{description && <meta name="description" content={description}>}
+{color && <meta name="theme-color" content={color}/>}
+
+<!-- OpenGraph  -->
 <meta property="og:url" content={`https://${DOMAIN}`}>
 <meta property="og:type" content="website">
 <meta property="og:title" content={title}>
-<meta property="og:description" content={description}>
-<meta property="og:image" content={`https://${DOMAIN}/${image}`}>
+{description && <meta property="og:description" content={description}>}
+{image && <meta property="og:image" content={`https://${DOMAIN}/${image}`}>}
+
+<!-- Twitter  -->
 <meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:domain" content={DOMAIN}>
 <meta property="twitter:url" content={`https://${DOMAIN}`}>
 <meta name="twitter:title" content={title}>
-<meta name="twitter:description" content={description}>
-<meta name="twitter:image" content={`https://${DOMAIN}/${image}`}>
+{description && <meta name="twitter:description" content={description}>}
+{image && <meta name="twitter:image" content={`https://${DOMAIN}/${image}`}>}

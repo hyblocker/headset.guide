@@ -1,0 +1,15 @@
+:root {
+    // Fonts
+    --domain-font: 'Kanit', sans-serif;
+    --header-font: 'Hind', sans-serif; // the header links
+    --title-font: 'Krona One', sans-serif; // h1, h2, etc.
+    --content-font: sans-serif;
+    --monospace-font: monospace;
+
+    // Header
+    --header-background: #212121;
+    --header-link-normal: #e0e0e0;
+    --header-link-hover: #f8f8f8;
+    --header-link-selected: #78affa;
+    --header-link-weight: 700;
+}

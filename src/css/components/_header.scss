@@ -1,0 +1,37 @@
+.headerLinks {
+    background-color: var(--header-background);
+    list-style-type: none;
+
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 3rem;
+
+    font-family: var(--header-font, sans-serif);
+}
+
+.headerPage {
+    position: relative;
+    text-decoration: none;
+
+    color: var(--header-link-normal);
+    font-weight: var(--header-link-weight);
+
+    &:hover {
+        color: var(--header-link-hover);
+    }
+    &.selected {
+        color: var(--header-link-selected);
+        &:hover{
+            color: var(--header-link-selected);
+        }
+    }
+}
+
+.headerLink {
+    margin-left: 0.5rem;
+
+    &:first-child {
+        margin-left: 0;
+    }
+}

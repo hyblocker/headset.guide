@@ -1,0 +1,22 @@
+.landing-page {
+    width: fit-content;
+    margin: auto;
+
+    & .icon {
+        width: 48rem;
+    }
+
+    & .domain-title {
+        font-family: var(--domain-font);
+        font-size: 6rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    & .slogan {
+        font-family: var(--title-font);
+        opacity: 0.8;
+        font-size: 2rem;
+        text-align: center;
+    }
+}
