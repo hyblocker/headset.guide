@@ -17,9 +17,9 @@ import { DOMAIN } from '$/constants.js';
 {image && <meta property="og:image" content={`https://${DOMAIN}/${image}`}>}
 
 <!-- Twitter  -->
-<meta name="twitter:card" content="summary_large_image">
 <meta property="twitter:domain" content={DOMAIN}>
 <meta property="twitter:url" content={`https://${DOMAIN}`}>
 <meta name="twitter:title" content={title}>
 {description && <meta name="twitter:description" content={description}>}
 {image && <meta name="twitter:image" content={`https://${DOMAIN}/${image}`}>}
+{image && <meta name="twitter:card" content="summary_large_image">}

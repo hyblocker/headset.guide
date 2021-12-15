@@ -2,21 +2,46 @@
     width: fit-content;
     margin: auto;
 
-    & .icon {
-        width: 48rem;
+    & .landing-hmd-wrapper {
+        margin: auto;
+        width: fit-content;
+    }
+
+    & .landing-hmd {
+        width: 28rem;
+        @media screen and (max-width: 600px) {
+            width: 12em;
+        }
     }
 
     & .domain-title {
-        font-family: var(--domain-font);
-        font-size: 6rem;
+        display: block;
         margin: 0;
         text-align: center;
+        font-family: var(--domain-font);
+        font-weight: var(--domain-weight);
+        font-size: 6rem;
+
+        @media screen and (max-width: 600px) {
+            font-size: 2.5rem;
+        }
     }
 
     & .slogan {
-        font-family: var(--title-font);
-        opacity: 0.8;
-        font-size: 2rem;
+        display: block;
         text-align: center;
+        font-family: var(--title-font);
+        font-weight: var(--slogan-weight);
+        font-size: 2rem;
+        // opacity: 0.8;
+
+        // Reality should be using the accent color
+        & > .accent {
+            color: var(--accent);
+        }
+
+        @media screen and (max-width: 600px) {
+            font-size: 1.4rem;
+        }
     }
 }

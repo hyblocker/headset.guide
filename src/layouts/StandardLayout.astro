@@ -34,11 +34,13 @@ const {
             color={ color }
         />
 
-        <link rel="icon" href="/content/shared/favicon.ico">
+        <link rel="icon" href="/content/shared/favicon.png" type="image/png">
+        <link rel="icon" href="/content/shared/favicon.svg" type="image/svg+xml">
         <link rel="stylesheet" lang="scss" href="{Astro.resolve('../css/main.css')}">
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Hind:wght@600;700&family=Kanit&family=Krona+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,700;1,400;1,700&family=Kanit:wght@600;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <Header
@@ -51,5 +53,6 @@ const {
         </div>
 
         <script src="/assets/scripts/lang-helper.js" hoist/>
+        <script src="/assets/scripts/core.js" hoist/>
     </body>
 </html>

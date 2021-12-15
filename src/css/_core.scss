@@ -1,14 +1,104 @@
-body {
-    font-family: var(--content-font, sans-serif);
+* {
     margin: 0;
 }
-code {
+
+body {
+    font-family: var(--content-font, sans-serif);
+    font-weight: var(--content-weight, 400);
+    background-color: var(--background);
+    color: var(--text-color);
+}
+
+pre, code {
     font-family: var(--monospace-font, monospace);
+    font-weight: var(--monospace-weight, 400);
+
+    background-color: rgb(255 255 255 / 7%);
 }
-h1,h2.h3 {
+pre {
+    padding: 1em;
+
+    code {
+        background-color: transparent;
+        padding: 0;
+        margin: 0;
+    }
+}
+code {
+    padding: .2em;
+    margin: .4em;
+}
+
+@mixin title($weight, $font-size) {
     font-family: var(--title-font, monospace);
+    font-weight: $weight;
+    font-size: $font-size;
 }
+
+h1 {
+    @include title(var(--title-weight, 700), 4.5rem);
+
+    padding-top: .2em;
+    margin-top: .8em;
+    border-top: .05em solid rgba(255, 255, 255, 0.38);
+    &:first-child {
+        padding-top: 0;
+        margin-top: 0;
+        border-top: none;
+    }
+}
+
+h2 {
+    @include title(var(--subtitle-weight, 600), 3.8rem);
+}
+
+h3 {
+    @include title(var(--subtitle-weight, 600), 3.2rem);
+}
+
+h4 {
+    @include title(var(--subtitle-weight, 600), 2.6rem);
+}
+
+h5 {
+    @include title(var(--subtitle-weight, 600), 2rem);
+}
+
+h6 {
+    @include title(var(--subtitle-weight, 600), 1.4rem);
+}
+
+a {
+    color: var(--accent, #0098df);
+}
+
 .content {
     position: relative;
     padding: 3rem;
+}
+
+blockquote {
+    border-left: .35em solid rgb(255 255 255 / 38%);
+    background-color: rgb(255 255 255 / 5%);
+    padding: 1.4em 1em;
+    margin: 1em 0;
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+
+// tables
+table {
+    border-spacing: 0;
+    border-collapse: collapse;
+    & td, & th {
+        padding: 6px 13px;
+        border: 1px solid rgb(223 226 229 / 37%);
+    }
 }

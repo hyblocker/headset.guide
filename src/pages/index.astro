@@ -1,13 +1,16 @@
 ---
 import StandardLayout from '$layouts/StandardLayout.astro';
+import BannerHmd from '$assets/hmd-icon.astro';
 ---
 <StandardLayout>
     <div class="interactive">
 
         <div class="landing-page">
-            <img class="icon" src="/content/shared/banner.svg"/>
-            <h1 class="domain-title">headset.guide</h1>
-            <h1 class="slogan">Coming soon...</h1>
+            <div class="landing-hmd-wrapper">
+                <BannerHmd class="landing-hmd" width="fit-content"/>
+            </div>
+            <span class="domain-title">headset.guide</span>
+            <span class="slogan">Find your next <span class="accent">reality</span></span>
         </div>
 
         <script src="/assets/scripts/landing-page.js" hoist/>
