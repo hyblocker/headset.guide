@@ -7,6 +7,9 @@ body {
     font-weight: var(--content-weight, 400);
     background-color: var(--background);
     color: var(--text-color);
+    @media screen and (max-width: 600px) {
+        font-size: 12px;
+    }
 }
 
 pre, code {
@@ -32,11 +35,13 @@ code {
 @mixin title($weight, $font-size) {
     font-family: var(--title-font, monospace);
     font-weight: $weight;
-    font-size: $font-size;
+    font-size: $font-size * 1em;
+    line-height: 1;
+    margin: .4em 0;
 }
 
 h1 {
-    @include title(var(--title-weight, 700), 4.5rem);
+    @include title(var(--title-weight, 700), 4.5);
 
     padding-top: .2em;
     margin-top: .8em;
@@ -49,23 +54,23 @@ h1 {
 }
 
 h2 {
-    @include title(var(--subtitle-weight, 600), 3.8rem);
+    @include title(var(--subtitle-weight, 600), 3.8);
 }
 
 h3 {
-    @include title(var(--subtitle-weight, 600), 3.2rem);
+    @include title(var(--subtitle-weight, 600), 3.2);
 }
 
 h4 {
-    @include title(var(--subtitle-weight, 600), 2.6rem);
+    @include title(var(--subtitle-weight, 600), 2.6);
 }
 
 h5 {
-    @include title(var(--subtitle-weight, 600), 2rem);
+    @include title(var(--subtitle-weight, 600), 2);
 }
 
 h6 {
-    @include title(var(--subtitle-weight, 600), 1.4rem);
+    @include title(var(--subtitle-weight, 600), 1.4);
 }
 
 a {
@@ -74,9 +79,14 @@ a {
 
 .content {
     position: relative;
-    padding: 3rem;
+    padding: 3em;
+
+    & img {
+        max-width: calc(100vw - 6em);
+    }
 }
 
+// blockquotes
 blockquote {
     border-left: .35em solid rgb(255 255 255 / 38%);
     background-color: rgb(255 255 255 / 5%);
