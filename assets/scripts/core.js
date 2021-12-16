@@ -3,4 +3,4 @@ if (window.matchMedia &&
     document.head.querySelectorAll(`link[rel="icon"][type="image/png"]`)[0].href = "/content/shared/favicon-light.png";
 }
 
-// document.body.classList.remove('nojs');
+// document.body.classList.remove('no-js');
