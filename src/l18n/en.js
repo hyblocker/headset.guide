@@ -1,4 +1,5 @@
 export default {
+    "display_name": "English",
     "home": "Home",
     "choose": "Pick a Headset",
     "compare": "Compare Headsets",

@@ -10,7 +10,7 @@ const {
     content = {},
     transparent = true,
 
-    locale = "en",
+    locale = content.locale ?? "en",
 
     title = (content.title === undefined) ?
               ((currentPage === '/' || currentPage.startsWith(`/${locale}`)) ? SITE_NAME : `${currentPage.replace(/^\/+|\/+$/g, '')} | ${SITE_NAME}`)
@@ -42,7 +42,7 @@ const {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,700;1,400;1,700&family=Kanit:wght@600;700&display=swap" rel="stylesheet">
     </head>
-    <body>
+    <body class="nojs">
         <Header
             page={currentPage}
             transparent={transparent}

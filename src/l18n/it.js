@@ -1,4 +1,5 @@
 export default {
+    "display_name": "Italiano",
     "home": "Home",
     "choose": "Scegli una Visore VR",
     "compare": "Compara Visori VR",
