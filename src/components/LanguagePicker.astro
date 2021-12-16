@@ -3,6 +3,7 @@ import Debug from 'astro/debug';
 const currentPage = Astro.request.url.pathname;
 const { locale = "en" } = Astro.props;
 import { fetchLangData, languages } from '$/langUtil.js';
+import TranslateIcon from "$icons/translate.astro";
 
 let locale_map = {};
 
@@ -23,14 +24,20 @@ function getPageInLocale(page, targetLocale = "en") {
 ---
 <div class="language-picker" role="menu">
     <div class="selected" tabindex="0">
-        <!-- TODO: Lang icon here -->
-        <span class="language_name">{language_display_name}</span>
+        <TranslateIcon/>
+        <span class="language-name">{language_display_name}</span>
         <!-- TODO: Arrow \/ -->
     </div>
     <div class="lang-popout">
         <ul class="lang-popout-container">
             {languages.map((thisLang) => (
-                <li><a href="{getPageInLocale(currentPage, thisLang)}">{locale_map[thisLang].display_name}</a></li>
+                <li><a
+                    href="{getPageInLocale(currentPage, thisLang)}"
+                    data-lang="{thisLang}"
+                    aria-label="{locale_map[thisLang].display_name}"
+                    >
+                        {locale_map[thisLang].display_name}
+                </a></li>
             ))}
         </ul>
     </div>

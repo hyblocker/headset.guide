@@ -1,6 +1,4 @@
 .language-picker {
-    border: 2px solid red;
-    padding: .3rem 1.4rem;
 
     position: relative;
 
@@ -8,8 +6,23 @@
         margin-left: auto;
     }
 
-    .nojs & {
+    .no-js & {
         cursor: pointer;
+    }
+
+    & .selected {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        padding: .3rem 1rem;
+
+        border: 2px solid rgba(255, 255, 255, 0.22);
+        border-radius: .4rem;
+
+        & .language-name {
+            margin-left: 8px;
+        }
     }
 }
 
@@ -19,23 +32,38 @@
     position: absolute;
     top: 2.2rem;
     left: 0;
-
-    padding: .3rem 1.4rem;
+    width: 100%;
+    padding: 0;
 
     background-color: #171717;
 
     opacity: 0;
     visibility: hidden;
 
+    z-index: 8000;
+
     & a {
         text-decoration: none;
         color: #d5d5d5;
+    }
+    & li {
+        padding: .3rem 1.4rem;
+        color: #d5d5d5;
         &:hover {
             color: #efefef;
+            background-color: #3a3a3a;
         }
     }
 
+    // This selector can probably be significantly simplified
+    .lang-popout-container:focus,
+    .lang-popout-container:focus-within,
+    .lang-popout-container:hover,
+    .language-picker:focus,
+    .language-picker:focus-within,
     .language-picker > .selected:focus + .lang-popout &,
+    .language-picker > .selected:focus-within + .lang-popout &,
+    .language-picker > .selected + .lang-popout:focus,
     .language-picker > .selected + .lang-popout:focus-within,
     .language-picker:hover > .selected + .lang-popout & {
         opacity: 1;

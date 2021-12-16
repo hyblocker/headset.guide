@@ -9,6 +9,7 @@ module.exports = {
         $content: './public/content',
         $layouts: './src/layouts',
         $assets: './src/assets',
+        $icons: './src/assets/icons',
         $l18n: './src/l18n',
     },
 };
