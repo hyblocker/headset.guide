@@ -1,0 +1,37 @@
+---
+import Debug from 'astro/debug';
+const currentPage = Astro.request.url.pathname;
+const { locale = "en" } = Astro.props;
+import { fetchLangData, languages } from '$/langUtil.js';
+
+let locale_map = {};
+
+// Fetch the language data
+for (let i = 0; i < languages.length; i++) {
+    // idk why astro fucking dies if i inline this
+    // probably a bug lol
+    const lang = await fetchLangData(languages[i]);
+    locale_map[languages[i]] = lang;
+}
+
+const language_display_name = locale_map[locale].display_name;
+
+function getPageInLocale(page, targetLocale = "en") {
+    const loadedLocale = `/${locale}/`;
+    return currentPage.startsWith(loadedLocale) ? currentPage.replace(loadedLocale, `/${targetLocale}/`) : `/${targetLocale}/`;
+}
+---
+<div class="language-picker" role="menu">
+    <div class="selected" tabindex="0">
+        <!-- TODO: Lang icon here -->
+        <span class="language_name">{language_display_name}</span>
+        <!-- TODO: Arrow \/ -->
+    </div>
+    <div class="lang-popout">
+        <ul class="lang-popout-container">
+            {languages.map((thisLang) => (
+                <li><a href="{getPageInLocale(currentPage, thisLang)}">{locale_map[thisLang].display_name}</a></li>
+            ))}
+        </ul>
+    </div>
+</div>

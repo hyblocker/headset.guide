@@ -3,7 +3,9 @@ const { transparent = false, locale = "en" } = Astro.props;
 let { page } = Astro.props;
 
 import Debug from 'astro/debug';
-const l18n = (await import ( `../l18n/${locale}.js`)).default;
+import LanguagePicker from '$components/LanguagePicker';
+import { fetchLangData } from '$/langUtil.js';
+const l18n = await fetchLangData(locale);
 
 // Fix "/"
 page = page === "/" ? `/${locale}/` : page;
@@ -48,5 +50,6 @@ Object.keys(pageData).forEach(x => {
         <li class="headerLink"><a class={pageData.compare.class}    href={pageData.compare.url}>{pageData.compare.title}</a></li>
         <li class="headerLink"><a class={pageData.enhance.class}    href={pageData.enhance.url}>{pageData.enhance.title}</a></li>
         <li class="headerLink"><a class={pageData.github.class}     href="https://github.com/hyblocker/headset.guide" target="_blank">{pageData.github.title}</a></li>
+        <LanguagePicker locale={locale}/>
     </ul>
 </div>
