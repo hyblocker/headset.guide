@@ -13,7 +13,7 @@ const {
     locale = "en",
 
     title = (content.title === undefined) ?
-              ((currentPage === '/' || currentPage === "/en/") ? SITE_NAME : `${currentPage.replace(/^\/+|\/+$/g, '')} | ${SITE_NAME}`)
+              ((currentPage === '/' || currentPage.startsWith(`/${locale}`)) ? SITE_NAME : `${currentPage.replace(/^\/+|\/+$/g, '')} | ${SITE_NAME}`)
             : (content.title === "" ? SITE_NAME : `${content.title} | ${SITE_NAME}`),
     description = content.description ?? "",
     image = content.image ?? "",
@@ -46,6 +46,7 @@ const {
         <Header
             page={currentPage}
             transparent={transparent}
+            locale={locale}
         />
 
         <div class="content">

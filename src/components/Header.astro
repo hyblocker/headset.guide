@@ -2,6 +2,9 @@
 const { transparent = false, locale = "en" } = Astro.props;
 let { page } = Astro.props;
 
+import Debug from 'astro/debug';
+const l18n = (await import ( `../l18n/${locale}.js`)).default;
+
 // Fix "/"
 page = page === "/" ? `/${locale}/` : page;
 
@@ -25,11 +28,11 @@ const getLinkClass = ((url) => {
 const homeRootClassList = transparent === "true" ? "header transparent" : "header";
 
 const pageData = {
-    home:       { url: `/${locale}/`,                   class: "", title: "Among Us VR" },
-    choose:     { url: `/${locale}/choose-headset/`,    class: "", title: "Among Us VR" },
-    compare:    { url: `/${locale}/compare/`,           class: "", title: "Among Us VR" },
-    enhance:    { url: `/${locale}/enhance/`,           class: "", title: "Among Us VR" },
-    github:     { url: `SPECIAL_GITHUB_REPO`,           class: "", title: "Among Us VR" },
+    home:       { url: `/${locale}/`,                   class: "", title: l18n.home     },
+    choose:     { url: `/${locale}/choose-headset/`,    class: "", title: l18n.choose   },
+    compare:    { url: `/${locale}/compare/`,           class: "", title: l18n.compare  },
+    enhance:    { url: `/${locale}/enhance/`,           class: "", title: l18n.enhance  },
+    github:     { url: `SPECIAL_GITHUB_REPO`,           class: "", title: l18n.github   },
 };
 
 // auto-generate the classes
@@ -40,10 +43,10 @@ Object.keys(pageData).forEach(x => {
 ---
 <div class={homeRootClassList}>
     <ul class="headerLinks">
-        <li class="headerLink"><a class={pageData.home.class}       href={pageData.home.url}>Home</a></li>
-        <li class="headerLink"><a class={pageData.choose.class}     href={pageData.choose.url}>Pick a Headset</a></li>
-        <li class="headerLink"><a class={pageData.compare.class}    href={pageData.compare.url}>Compare Headsets</a></li>
-        <li class="headerLink"><a class={pageData.enhance.class}    href={pageData.enhance.url}>Enhancing VR</a></li>
-        <li class="headerLink"><a class={pageData.github.class}     href="https://github.com/hyblocker/headset.guide" target="_blank">View on GitHub</a></li>
+        <li class="headerLink"><a class={pageData.home.class}       href={pageData.home.url}>{pageData.home.title}</a></li>
+        <li class="headerLink"><a class={pageData.choose.class}     href={pageData.choose.url}>{pageData.choose.title}</a></li>
+        <li class="headerLink"><a class={pageData.compare.class}    href={pageData.compare.url}>{pageData.compare.title}</a></li>
+        <li class="headerLink"><a class={pageData.enhance.class}    href={pageData.enhance.url}>{pageData.enhance.title}</a></li>
+        <li class="headerLink"><a class={pageData.github.class}     href="https://github.com/hyblocker/headset.guide" target="_blank">{pageData.github.title}</a></li>
     </ul>
 </div>
